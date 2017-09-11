@@ -96,7 +96,7 @@ Vue.config.keyCodes.f1 = 112
 ---
 ## [vm.$refs](https://cn.vuejs.org/v2/api/#ref)
 > 一个对象，其中包含了所有拥有 ref 注册的子组件。
-###[子组件引用](https://cn.vuejs.org/v2/guide/components.html#子组件索引)
+### [子组件引用](https://cn.vuejs.org/v2/guide/components.html#子组件索引)
 > &nbsp;&nbsp;Javascript直接访问子组件,使用ref为子组件指定组件一个索引ID。
 #### tips
 ><font color="red">当 ref 和 v-for 一起使用时，ref 是一个数组，包含相应的子组件。
