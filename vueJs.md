@@ -50,8 +50,8 @@
 <!-- 点击事件将只会触发一次 -->
 <a v-on:click.once="doThis"></a>
 ```
-> <font size=3 color=red>tip
-    >>使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 @click.prevent.self 会阻止所有的点击，而 @click.self.prevent 只会阻止元素上的点击。</font>
+> tip
+    >><font size=3 color=red>使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 @click.prevent.self 会阻止所有的点击，而 @click.self.prevent 只会阻止元素上的点击。</font>
 ## [键值修饰符](https://cn.vuejs.org/v2/guide/events.html#修饰键)
 >按键别名
 * >>*.enter*
