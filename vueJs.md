@@ -102,6 +102,7 @@ Vue.config.keyCodes.f1 = 112
 ><font color="red">当 ref 和 v-for 一起使用时，ref 是一个数组，包含相应的子组件。
 >>$refs只能在组件渲染完成后才填充,非响应式的
 </font>
+---
 ### [特殊特性ref](https://cn.vuejs.org/v2/api/#ref)
 >&nbsp;&nbsp;&nbsp;ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素; 如果用在子组件上，引用就指向组件实例:
 >当 v-for 用于元素或组件的时候，引用信息将是包含 DOM 节点或组件实例的数组。
