@@ -1,63 +1,138 @@
-"use strict";
+'use strict';
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-var a = 3,
-    b = 3,
-    c = 1,
-    d = 2;
-
+/*
+let [a, b, c, d] = [3, 3, 1, 2];
 console.log([a, b, c, d]); //3,3,1,2
-var foo = 1,
-    bar = 2,
-    baz = 3;
-
-console.log([foo, [[bar], baz]]); //1,[[2],3]
-
-var _ref = ["one", "two", ["three"]],
-    _ref$ = _slicedToArray(_ref[2], 1),
-    q = _ref$[0];
-
-console.log([,, [q]]);
-var head = 1,
-    tail = [2, 3, 4];
-
-var cc = [head].concat(_toConsumableArray(tail));
+let [foo, [
+    [bar], baz
+]] = [1, [
+    [2], 3
+]];
+console.log([foo, [
+    [bar], baz
+]]); //1,[[2],3]
+let [, , [q]] = ["one", "two", ["three"]];
+console.log([, , [q]]);
+let [head, ...tail] = [1, 2, 3, 4];
+let cc=[head,...tail];
 console.log(cc[2]);
-console.log([head].concat(_toConsumableArray(tail)));
-
-var _ref2 = ['a'],
-    x = _ref2[0],
-    y = _ref2[1],
-    z = _ref2.slice(2);
+console.log([head, ...tail]);
+let [x, y, ...z] = ['a'];
 //let [aa]=1;
 
 //默认值
-
-
-var _ = 111,
-    other = _ === undefined ? true : _;
-
+let [other=true]=[111];
 console.log([other]);
 // let [pra1=1,pra2=2]=[];
 // console.log([pra1,pra2]);
 //let [pra1=1,pra2=pra1]=[];
-var _ref3 = [2],
-    _ref3$ = _ref3[0],
-    pra1 = _ref3$ === undefined ? pra2 : _ref3$,
-    _ref3$2 = _ref3[1],
-    pra2 = _ref3$2 === undefined ? other : _ref3$2;
-
-console.log([pra1, pra2]);
-var _ref4 = null,
-    de = _ref4 === undefined ? 1 : _ref4;
-
+let [pra1=pra2,pra2=other]=[2];
+console.log([pra1,pra2]);
+let [de=1]=[null];
 console.log([de]);
-var _ref5 = [2];
-var _ref5$ = _ref5[0];
-pra1 = _ref5$ === undefined ? 1 : _ref5$;
-var _ref5$2 = _ref5[1];
-pra2 = _ref5$2 === undefined ? 2 : _ref5$2;
-_ref5;
+ [pra1=1,pra2=2]=[2];
+*/
+
+//对象解构赋值
+/*
+let { a, c, b } = { a: 1, b: 2 };
+({ a, b } = { a: 1, b: 3 });
+console.log({ a, c, b });
+
+//变量名和属性名不一致写法
+let obj = { x: 88, y: 88 };
+let { x: aa, y: bb } = obj;
+console.log({ x: aa, y: bb });
+
+//对象解构和数组一样，也可用于嵌套结构对象
+
+let obj1 = {
+    p: ["hello", { g: "box" }]
+};
+let { p, p: [q, { g }] } = obj1;
+console.log({ p, p: [q, { g }] });
+
+var node = {
+    loc: {
+        start: {
+            line: 1,
+            column: 5
+        }
+    }
+};
+var { loc, loc: { start }, loc: { start: { line } } } = node;
+
+console.log({ loc, loc: { start }, loc: { start: { line } } });
+//控制台只输出了一个包含LOC属性的对象，这个属性值以解构最完全的一个赋值
+//在ES6语法声明中，loc就被叫做模式
+*/
+
+/*
+let obj = {};
+let arr = [];
+
+({ foo: obj.prop, bar: arr[0] } = { foo: 123, bar: true });
+console.log({ foo: obj.prop, bar: arr[0] });//({ foo: obj.prop, bar: arr[0] }
+console.log(obj)//同时也给对象进行了赋值
+*/
+
+//对象解构也支持默认值
+/*var {x: y = 3} = {x:5};
+console.log({x:y});//y值作为变量,x作为模式{x:5},y值默认为3，讲5赋值给y;
+*/
+
+/***字符串解构赋值 */
+/*const [a,b,c,f,d]='hello';
+console.log([a,b,c,f,d]);
+let {length:len}='boxsdsd';
+console.log({length:len});//len:7*/
+
+/*****数值和布尔值解构赋值 */
+/*let {toString:s}=456;
+console.log(s===Number.prototype.toString );//true*/
+// var aa=[1,2];
+// var bb=[2,3];
+// var cc=aa+bb;
+// console.log(cc);
+
+
+//函数参数的解构赋值
+//console.log([[1, 2], [3, 4]].map(([a, b]) => a + b));
+
+function add(_ref) {
+    var _ref2 = _slicedToArray(_ref, 2),
+        x = _ref2[0],
+        y = _ref2[1];
+
+    return x + y;
+}
+console.log(add([2, 3]));
+
+function def() {
+    var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref3$a = _ref3.a,
+        a = _ref3$a === undefined ? 0 : _ref3$a,
+        _ref3$b = _ref3.b,
+        b = _ref3$b === undefined ? 0 : _ref3$b;
+
+    // a=0 b=0 是a和b的默认值 ES6中函数参数默认值有=链接 参数默认值为{}
+    return a + b;
+}
+console.log(def({ a: 1, b: 2 }));
+
+function go() {
+    var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { a: 0, b: 0 },
+        a = _ref4.a,
+        b = _ref4.b;
+
+    return [a, b];
+}
+console.log(go({ a: 2, b: 3 }));
+console.log(go({})); //undefined undeined 用空对象去解构赋值，在对象中解构不成功就会出现undefined
+console.log(); //没有参数，就会调用默认参数 [0,0]
+[1, undefined, 3].map(function () {
+    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'yes';
+    return x;
+}); // [1,'yes,3] undefined 会触发函数参数的默认值
